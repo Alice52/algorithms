@@ -1,5 +1,6 @@
 # Compiled class file
 *.class
+/algs4-data/
 
 # Log file
 *.log
