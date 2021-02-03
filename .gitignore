@@ -1,7 +1,8 @@
 # custom for this repo
 algs4-data/
 *.class
-
+*.iml
+**.iml
 ## java
 
 # Compiled class file
