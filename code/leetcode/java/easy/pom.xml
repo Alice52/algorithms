@@ -11,5 +11,11 @@
 
     <artifactId>easy</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>cn.edu.ntu</groupId>
+            <artifactId>common-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>
