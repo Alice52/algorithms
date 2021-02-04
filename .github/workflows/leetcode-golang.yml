@@ -1,4 +1,4 @@
-name: Build common-api Project
+name: Build Leetcode Golang Project
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-       - name: Install Go
+      - name: Install Go
         uses: actions/setup-go@v2
         with:
           go-version: 1.15
@@ -32,4 +32,4 @@ jobs:
       - name: Build Leetcode Golang Project
         run: |
           cd $PROJECT_HOME/$PROJECT_NAME/
-          go build
+          go build ./...
