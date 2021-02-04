@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - 'code/leetcode/java/**'
+      - 'code/learning/**'
       - '.github/workflows/leetcode-java.yml'
 
 jobs:
@@ -13,7 +14,7 @@ jobs:
     runs-on: ubuntu-20.04
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     env: # define constant
-      PROJECT_NAME: code/leetcode/java/
+      PROJECT_NAME: code
 
     steps:
       - name: Checkout Code
@@ -38,5 +39,10 @@ jobs:
 
       - name: Build Leetcode Java Project
         run: |
-          cd $PROJECT_HOME/$PROJECT_NAME/
+          cd $PROJECT_HOME/$PROJECT_NAME/leetcode/java/
+          mvn clean package -DskipTests=true
+
+      - name: Build Struct Java Project
+        run: |
+          cd $PROJECT_HOME/$PROJECT_NAME/learning/struct
           mvn clean package -DskipTests=true
