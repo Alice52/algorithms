@@ -3,5 +3,5 @@ package array
 import "fmt"
 
 func TwoSum() {
-	fmt.Println("hello twoSum *** ")
+    fmt.Println("hello twoSum *** ")
 }

@@ -24,10 +24,11 @@ public class CircleArrayQueue {
     this.arr = new int[size];
   }
 
-    /**
-     * this is not real full, will reserve one address to Promise.
-     * @return boolean isFull
-     */
+  /**
+   * this is not real full, will reserve one address to Promise.
+   *
+   * @return boolean isFull
+   */
   public boolean isFull() {
     return (this.rear + 1) % this.size == this.front;
   }
