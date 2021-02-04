@@ -1,0 +1,35 @@
+name: Build common-api Project
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'code/leetcode/golang/**'
+      - '.github/workflows/leetcode-golang.yml'
+
+jobs:
+  main:
+    runs-on: ubuntu-20.04
+    if: "!contains(github.event.head_commit.message, 'ci skip')"
+    env: # define constant
+      PROJECT_NAME: code/leetcode/golang/
+      GOPROXY: "https://proxy.company.com"
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+       - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.15
+
+      - name: Export Global Var
+        run: |
+          echo "PROJECT_HOME=$PWD" >> $GITHUB_ENV
+
+      - name: Build Leetcode Golang Project
+        run: |
+          cd $PROJECT_HOME/$PROJECT_NAME/
+          go build
