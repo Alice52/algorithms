@@ -1,6 +1,5 @@
 package cn.edu.ntu.datastruct.array;
 
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

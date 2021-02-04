@@ -5,11 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.reflect.Array;
 import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.List;
-import java.util.Stack;
 
 /**
  * @author zack <br>
@@ -19,6 +15,79 @@ public class SingleLinkedList {
   private static final Logger LOG = LoggerFactory.getLogger(SingleLinkedList.class);
 
   private HeroNode head = new HeroNode(0, StringUtils.EMPTY, StringUtils.EMPTY);
+
+  /**
+   * Concat two ordered linked list, and still ordered. <br>
+   * Select one of them as based list, extract the elements of another linked list, and insert them
+   * in turn. <br>
+   * <br>
+   * Notice: two linked list next node and serial of both list. <br>
+   * Disadvantage: this will change source linked list, do not recommend. <br>
+   *
+   * @param head1 Linked List
+   * @param head2 Linked List
+   */
+  @Deprecated
+  public static void concat(HeroNode head1, HeroNode head2) {
+
+    HeroNode current1 = head1.next;
+    HeroNode next1;
+
+    // base list, head1 element will insert into this list.
+    HeroNode temp = head2;
+
+    while (current1 != null) {
+      next1 = current1.next;
+
+      // insert into base list
+      while (temp.next != null) {
+        if (current1.no > temp.next.no) {
+          temp = temp.next;
+        } else {
+          break;
+        }
+      }
+
+      current1.next = temp.next;
+      temp.next = current1;
+
+      current1 = next1;
+    }
+  }
+
+  /**
+   * Extract two linked list node and store in deque, then create new linked list; <br>
+   * Get node from deque and insert into new linked list in turn. <br>
+   *
+   * @param head1 Linked List
+   * @param head2 Linked List
+   * @return List<HeroNode> combine result
+   */
+  public static SingleLinkedList concat2(HeroNode head1, HeroNode head2) {
+
+    HeroNode newHead = new HeroNode();
+
+    ArrayDeque<HeroNode> queue = new ArrayDeque<>();
+
+    HeroNode temp1 = head1;
+    HeroNode temp2 = head2;
+
+    while (temp1.next != null) {
+      temp1 = temp1.next;
+      queue.addFirst(temp1);
+    }
+
+    while (temp2.next != null) {
+      temp2 = temp2.next;
+      queue.addFirst(temp2);
+    }
+
+    SingleLinkedList orderedLinkedList = new SingleLinkedList();
+
+    queue.stream().forEach(x -> orderedLinkedList.addOrdine(x));
+
+    return orderedLinkedList;
+  }
 
   /**
    * add hero node to linked list as operation order, need find rear element. <br>
@@ -160,8 +229,8 @@ public class SingleLinkedList {
   /** show all node by desc order. */
   public void listReverse() {
 
-    var queue = new ArrayDeque<HeroNode>();
-    var temp = head;
+    ArrayDeque<HeroNode> queue = new ArrayDeque<>();
+    HeroNode temp = head;
 
     while (temp.next != null) {
       temp = temp.next;
@@ -245,78 +314,5 @@ public class SingleLinkedList {
    */
   public HeroNode getHead() {
     return head;
-  }
-
-  /**
-   * Concat two ordered linked list, and still ordered. <br>
-   * Select one of them as based list, extract the elements of another linked list, and insert them
-   * in turn. <br>
-   * <br>
-   * Notice: two linked list next node and serial of both list. <br>
-   * Disadvantage: this will change source linked list, do not recommend. <br>
-   *
-   * @param head1 Linked List
-   * @param head2 Linked List
-   */
-  @Deprecated
-  public static void concat(HeroNode head1, HeroNode head2) {
-
-    var current1 = head1.next;
-    HeroNode next1;
-
-    // base list, head1 element will insert into this list.
-    var temp = head2;
-
-    while (current1 != null) {
-      next1 = current1.next;
-
-      // insert into base list
-      while (temp.next != null) {
-        if (current1.no > temp.next.no) {
-          temp = temp.next;
-        } else {
-          break;
-        }
-      }
-
-      current1.next = temp.next;
-      temp.next = current1;
-
-      current1 = next1;
-    }
-  }
-
-  /**
-   * Extract two linked list node and store in deque, then create new linked list; <br>
-   * Get node from deque and insert into new linked list in turn. <br>
-   *
-   * @param head1 Linked List
-   * @param head2 Linked List
-   * @return List<HeroNode> combine result
-   */
-  public static SingleLinkedList concat2(HeroNode head1, HeroNode head2) {
-
-    var newHead = new HeroNode();
-
-    var queue = new ArrayDeque<HeroNode>();
-
-    var temp1 = head1;
-    var temp2 = head2;
-
-    while (temp1.next != null) {
-      temp1 = temp1.next;
-      queue.addFirst(temp1);
-    }
-
-    while (temp2.next != null) {
-      temp2 = temp2.next;
-      queue.addFirst(temp2);
-    }
-
-    var orderedLinkedList = new SingleLinkedList();
-
-    queue.stream().forEach(x -> orderedLinkedList.addOrdine(x));
-
-    return orderedLinkedList;
   }
 }

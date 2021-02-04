@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.swing.plaf.nimbus.State;
 import java.util.Scanner;
 
 /**
@@ -16,16 +15,6 @@ public class CircleArrayQueueTest {
 
   /** This size is 5, but will reserve one to marked; So, real used space is 4. */
   private CircleArrayQueue circleArrayQueue = new CircleArrayQueue(5);
-
-  @Test
-  public void testAdd() {
-    circleArrayQueue.addQueue(12);
-    circleArrayQueue.addQueue(12);
-    circleArrayQueue.addQueue(12);
-    circleArrayQueue.addQueue(12);
-    // so, this will full
-    circleArrayQueue.addQueue(12);
-  }
 
   public static void main(String[] args) {
     LOG.info("Test For Circle queue implemented by array:");
@@ -69,5 +58,15 @@ public class CircleArrayQueueTest {
       }
     }
     LOG.info("Program exiting···");
+  }
+
+  @Test
+  public void testAdd() {
+    circleArrayQueue.addQueue(12);
+    circleArrayQueue.addQueue(12);
+    circleArrayQueue.addQueue(12);
+    circleArrayQueue.addQueue(12);
+    // so, this will full
+    circleArrayQueue.addQueue(12);
   }
 }

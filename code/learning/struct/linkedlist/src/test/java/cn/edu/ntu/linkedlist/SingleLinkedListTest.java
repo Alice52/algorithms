@@ -35,7 +35,7 @@ public class SingleLinkedListTest {
   @Test
   public void testAdd() {
     HeroNode hero1 = new HeroNode(1, "宋江", "及时雨");
-    var hero2 = new HeroNode(2, "卢俊义", "玉麒麟");
+    HeroNode hero2 = new HeroNode(2, "卢俊义", "玉麒麟");
     HeroNode hero3 = new HeroNode(3, "吴用", "智多星");
     HeroNode hero4 = new HeroNode(4, "林冲", "豹子头");
 
@@ -147,10 +147,10 @@ public class SingleLinkedListTest {
   @Test
   public void testListReverse() {
 
-    var hero1 = new HeroNode(1, "宋江", "及时雨");
-    var hero2 = new HeroNode(2, "卢俊义", "玉麒麟");
-    var hero3 = new HeroNode(3, "吴用", "智多星");
-    var hero4 = new HeroNode(4, "林冲", "豹子头");
+    HeroNode hero1 = new HeroNode(1, "宋江", "及时雨");
+    HeroNode hero2 = new HeroNode(2, "卢俊义", "玉麒麟");
+    HeroNode hero3 = new HeroNode(3, "吴用", "智多星");
+    HeroNode hero4 = new HeroNode(4, "林冲", "豹子头");
 
     SingleLinkedList singleLinkedList = new SingleLinkedList();
     singleLinkedList.addOrdine2(hero4);
@@ -165,10 +165,10 @@ public class SingleLinkedListTest {
   @Test
   public void testConcat() {
 
-    var hero1 = new HeroNode(1, "宋江", "及时雨");
-    var hero2 = new HeroNode(2, "卢俊义", "玉麒麟");
-    var hero3 = new HeroNode(3, "吴用", "智多星");
-    var hero4 = new HeroNode(4, "林冲", "豹子头");
+    HeroNode hero1 = new HeroNode(1, "宋江", "及时雨");
+    HeroNode hero2 = new HeroNode(2, "卢俊义", "玉麒麟");
+    HeroNode hero3 = new HeroNode(3, "吴用", "智多星");
+    HeroNode hero4 = new HeroNode(4, "林冲", "豹子头");
 
     SingleLinkedList singleLinkedList = new SingleLinkedList();
     singleLinkedList.addOrdine2(hero1);
@@ -186,10 +186,10 @@ public class SingleLinkedListTest {
   @Test
   public void testConcat2() {
 
-    var hero1 = new HeroNode(1, "宋江", "及时雨");
-    var hero2 = new HeroNode(2, "卢俊义", "玉麒麟");
-    var hero3 = new HeroNode(3, "吴用", "智多星");
-    var hero4 = new HeroNode(4, "林冲", "豹子头");
+    HeroNode hero1 = new HeroNode(1, "宋江", "及时雨");
+    HeroNode hero2 = new HeroNode(2, "卢俊义", "玉麒麟");
+    HeroNode hero3 = new HeroNode(3, "吴用", "智多星");
+    HeroNode hero4 = new HeroNode(4, "林冲", "豹子头");
 
     SingleLinkedList singleLinkedList = new SingleLinkedList();
     singleLinkedList.addOrdine2(hero1);
