@@ -220,10 +220,6 @@ obj/
 .vscode/
 *.elf
 
-# Fortran module files
-*.mod
-*.smod
-
 # Linker output
 *.ilk
 *.map
@@ -261,7 +257,6 @@ obj/
 *.pdb
 
 # Kernel Module Compile Results
-*.mod*
 *.cmd
 .tmp_versions/
 modules.order

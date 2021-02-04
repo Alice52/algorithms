@@ -1,8 +1,7 @@
-package main
+package array
 
 import "fmt"
 
-func twoSum() {
+func TwoSum() {
 	fmt.Println("hello twoSum *** ")
 }
-

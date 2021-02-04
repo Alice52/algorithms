@@ -1,7 +1,11 @@
 package test
 
-import "testing"
+import (
+    _array "golang/easy/leetcode/array"
+    "testing"
+)
 
 func TestHello(t *testing.T) {
-	print("testing")
+    _array.Hello()
+    _array.TwoSum()
 }
