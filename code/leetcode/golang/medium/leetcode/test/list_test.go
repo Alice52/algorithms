@@ -3,12 +3,12 @@ package test
 import (
     "fmt"
     "golang/common/api/model"
-    _list "golang/easy/leetcode/list"
+    _list "golang/medium/leetcode/list"
     "testing"
 )
 
 func TestAddTwoSum(t *testing.T) {
-    
+
     a := &model.ListNode{
         Val: 2,
         Next: &model.ListNode{
@@ -19,7 +19,7 @@ func TestAddTwoSum(t *testing.T) {
             },
         },
     }
-    
+
     b := &model.ListNode{
         Val: 5,
         Next: &model.ListNode{
@@ -30,15 +30,15 @@ func TestAddTwoSum(t *testing.T) {
             },
         },
     }
-    
+
     result := _list.AddTwoSum(a, b)
     for result != nil {
         fmt.Print(result.Val)
         result = result.Next
     }
-    
+
     fmt.Println()
-    
+
     a2 := &model.ListNode{
         Val: 9,
         Next: &model.ListNode{
@@ -49,15 +49,22 @@ func TestAddTwoSum(t *testing.T) {
             },
         },
     }
-    
+
     b2 := &model.ListNode{
         Val:  1,
         Next: nil,
     }
-    
+
     result2 := _list.AddTwoSum(a2, b2)
     for result2 != nil {
         fmt.Print(result2.Val)
         result2 = result2.Next
     }
+    fmt.Println()
+}
+
+func TestMaxArea(t *testing.T) {
+    nums := []int{1, 2, 3}
+    result := _list.MaxArea(nums)
+    fmt.Println(result)
 }

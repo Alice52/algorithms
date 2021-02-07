@@ -54,6 +54,10 @@ public class AddTwoNumber {
    * @return
    */
   public static ListNode addTwoNumber(ListNode a, ListNode b) {
+    if (a == null || b == null) {
+      return null;
+    }
+
     ListNode dummyHead = new ListNode(-1);
     int tempSum, carry = 0;
 
