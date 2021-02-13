@@ -18,7 +18,7 @@ assignees: Alice52
 xxx
 ```
 
-## 3. explain
+## 3. Explain
 
 1. xxx
 
@@ -32,10 +32,19 @@ xxx
 - [ ] 1. java
 - [ ] 2. golang
 
-## 6. [animation](MisterBooo/LeetCodeAnimation)
+## 6. [animation](https://github.com/MisterBooo/LeetCodeAnimation)
 
-  
+- N/A
 
 ## 7. Conclusion
+
+- N/A
+
+## 8. Best Practice
+
+1. Timing: O(x)
+2. Spacing: O(x)
+
+## 9. Similar Issue
 
 - N/A
