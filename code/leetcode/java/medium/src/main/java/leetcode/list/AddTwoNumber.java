@@ -28,7 +28,7 @@ public class AddTwoNumber {
       nodeT1 = nodeT1.nextNode;
     }
 
-    Optional.of(1).ifPresent(x -> System.out.println());
+    Optional.of(1).ifPresent(System.out::println);
 
     // test-02
     ListNode a2 = new ListNode(9, new ListNode(9, new ListNode(9)));
@@ -44,7 +44,7 @@ public class AddTwoNumber {
    * Core thinking:
    *
    * <pre>
-   *     1. non-negative list, so flow should be belo:
+   *     1. non-negative list, so flow should be below:
    *          dummyHead -> A => dummyHead -> B -> A
    *     2. make dummyHead
    * </pre>
