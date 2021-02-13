@@ -10,6 +10,6 @@ func TwoSum(nums []int, target int) []int {
             m[v] = i
         }
     }
-    
+
     return nil
 }
