@@ -8,7 +8,14 @@ import (
 
 func Test(t *testing.T) {
 
-    nums := []int{-2, 0, 1, 1, 2}
+    nums := []int{0, 0, 0, 0}
     result := array.ThreeSum(nums)
     fmt.Printf("result: %v", result)
+}
+
+func TestFourSum(t *testing.T) {
+
+    result := array.FourSumV3([]int{0, 1, 5, 0, 1, 5, 5, -4}, 11)
+
+    fmt.Printf("%v", result)
 }
