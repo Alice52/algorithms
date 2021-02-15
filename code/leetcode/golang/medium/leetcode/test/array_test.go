@@ -19,3 +19,11 @@ func TestFourSum(t *testing.T) {
 
     fmt.Printf("%v", result)
 }
+
+func TestFourSumII(t *testing.T) {
+
+    println(array.FourSumII([]int{1, 2},
+        []int{-2, -1},
+        []int{-1, 2},
+        []int{0, 2}))
+}
