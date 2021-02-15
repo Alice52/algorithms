@@ -12,6 +12,7 @@
         <module>medium</module>
         <module>difficulty</module>
         <module>common-api</module>
+        <module>interview</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -19,10 +19,10 @@ public class AddTwoNumber {
   public static void main(String[] args) {
 
     // test-01
-    ListNode a = new ListNode(2, new ListNode(4, new ListNode(3)));
-    ListNode b = new ListNode(5, new ListNode(6, new ListNode(4)));
+    ListNode<Integer> a = new ListNode<>(2, new ListNode<>(4, new ListNode<>(3)));
+    ListNode<Integer> b = new ListNode<>(5, new ListNode<>(6, new ListNode<>(4)));
 
-    ListNode nodeT1 = addTwoNumber(a, b);
+    ListNode<Integer> nodeT1 = addTwoNumber(a, b);
     while (nodeT1 != null) {
       System.out.print(nodeT1.value);
       nodeT1 = nodeT1.nextNode;
@@ -31,9 +31,10 @@ public class AddTwoNumber {
     Optional.of(1).ifPresent(System.out::println);
 
     // test-02
-    ListNode a2 = new ListNode(9, new ListNode(9, new ListNode(9)));
-    ListNode b2 = new ListNode(1);
-    ListNode nodeT2 = addTwoNumber(a2, b2);
+    ListNode<Integer> a2 =
+        new ListNode<Integer>(9, new ListNode<Integer>(9, new ListNode<Integer>(9)));
+    ListNode<Integer> b2 = new ListNode<Integer>(1);
+    ListNode<Integer> nodeT2 = addTwoNumber(a2, b2);
     while (nodeT2 != null) {
       System.out.print(nodeT2.value);
       nodeT2 = nodeT2.nextNode;
@@ -53,12 +54,12 @@ public class AddTwoNumber {
    * @param b
    * @return
    */
-  public static ListNode addTwoNumber(ListNode a, ListNode b) {
+  public static ListNode<Integer> addTwoNumber(ListNode<Integer> a, ListNode<Integer> b) {
     if (a == null || b == null) {
       return null;
     }
 
-    ListNode dummyHead = new ListNode(-1);
+    ListNode<Integer> dummyHead = new ListNode<Integer>(-1);
     int tempSum, carry = 0;
 
     // judgement and worker
@@ -77,13 +78,13 @@ public class AddTwoNumber {
       carry = tempSum / 10;
 
       // core: dummyHead -> A => dummyHead -> B -> A
-      ListNode newNode = new ListNode(tempSum % 10);
+      ListNode<Integer> newNode = new ListNode<Integer>(tempSum % 10);
       newNode.nextNode = dummyHead.nextNode;
       dummyHead.nextNode = newNode;
     }
 
     if (carry > 0) {
-      ListNode newNode = new ListNode(carry);
+      ListNode<Integer> newNode = new ListNode<Integer>(carry);
       newNode.nextNode = dummyHead.nextNode;
       dummyHead.nextNode = newNode;
     }
