@@ -2,6 +2,7 @@ package list
 
 import "golang/common/api/model"
 
+// issue-link: https://github.com/Alice52/Algorithms/issues/10
 func meetPtrNode(node *model.ListNode) *model.ListNode {
     // 长度为 2 则一定没有环
     slow, fast := node.Next, node.Next.Next
