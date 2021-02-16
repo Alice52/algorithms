@@ -15,3 +15,16 @@ func PrintListNode(node *ListNode) {
     }
     fmt.Println(node.Val)
 }
+
+func CreateCircleNode(head *ListNode, dummyNode *ListNode, totalN int) {
+    for i := 1; i <= totalN; i++ {
+        node := &ListNode{
+            Val:  i,
+            Next: nil,
+        }
+        dummyNode.Next = node
+        dummyNode = node
+    }
+
+    dummyNode.Next = head.Next
+}
