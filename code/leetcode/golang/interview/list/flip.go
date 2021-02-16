@@ -12,7 +12,6 @@ func FlipByRecursion(node *model.ListNode) {
     fmt.Println(node.Val)
 }
 
-
 func ReverseList(head *model.ListNode) *model.ListNode {
     cur := head
     var pre *model.ListNode = nil

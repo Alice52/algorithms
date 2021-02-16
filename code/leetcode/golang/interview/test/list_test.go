@@ -72,10 +72,17 @@ func Test(t *testing.T) {
     node5.Next = node6
     node6.Next = node2
 
-    fmt.Printf("node contains circle: %v", list.JudgeCircle(node1))
-    fmt.Println()
-    fmt.Printf("node circle node value: %v", list.GetCircleNode(node1).Val)
-    fmt.Println()
-    fmt.Printf("node circle length: %v", list.GetCircleLength(node1))
-    fmt.Println()
+    fmt.Printf("node contains circle: %v\n", list.JudgeCircle(node1))
+    fmt.Printf("node circle node value: %v\n", list.GetCircleNode(node1).Val)
+    fmt.Printf("node circle length: %v\n", list.GetCircleLength(node1))
+}
+
+func TestJosephRingByList(t *testing.T) {
+
+    fmt.Printf("out queue sequence: %v\n", list.JosephRingByList(1, 3, 41))
+}
+
+func TestJosephRingByMath(t *testing.T) {
+
+    fmt.Printf("last out queue element: %v\n", list.JosephRingByMath(3, 41))
 }
