@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Optional;
 
 /**
+ * issue-link: https://github.com/Alice52/Algorithms/issues/33<br>
+ * <br>
  * I think hash and HashSet is best practice.
  *
  * @author zack <br>

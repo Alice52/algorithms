@@ -6,6 +6,8 @@ import model.leetcode.common.model.ListNode;
 import java.util.Optional;
 
 /**
+ * issue-link: https://github.com/Alice52/Algorithms/issues/10
+ *
  * @author zack <br>
  * @create 2021-02-15 19:37 <br>
  * @project leetcode <br>
