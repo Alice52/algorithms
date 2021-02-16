@@ -50,7 +50,7 @@ public class CircleIntersect {
    * </pre>
    *
    * <pre>
-   *    1. [环前相交] 解开环之后求相交节点则为 连个不相交节点求相交节点 {@link Intersect#getNodeOfTwoIntersection(ListNode, ListNode)}
+   *    1. [环前相交] 解开环之后求相交节点长度则为两个不相交节点求相交节点长度 {@link Intersect#getIntersectionLength(ListNode, ListNode)}
    *    2. [环内相交] 就是环的长度
    * </pre>
    *

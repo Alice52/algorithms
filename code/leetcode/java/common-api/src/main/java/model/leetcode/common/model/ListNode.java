@@ -17,4 +17,14 @@ public class ListNode<T> {
   public ListNode(T value) {
     this.value = value;
   }
+
+  public static void createCircleNode(ListNode head, ListNode dummyNode, int num) {
+
+    for (int i = 1; i <= num; i++) {
+      ListNode node = new ListNode(i);
+      dummyNode.nextNode = node;
+      dummyNode = node;
+    }
+    dummyNode.nextNode = head.nextNode;
+  }
 }
