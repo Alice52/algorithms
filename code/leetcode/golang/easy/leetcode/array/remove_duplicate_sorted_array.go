@@ -16,7 +16,7 @@ func RemoveDuplicateOfSortedArray(nums []int) int {
         }
     }
 
-    // fmt.Printf("length is: %v\n", nums)
+    // fmt.Printf("nums is: %v\n", nums)
 
     return finder + 1
 }
