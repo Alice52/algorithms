@@ -49,4 +49,24 @@ public class RemoveDuplicateOfSortedArray {
     IntStream.of(nums).forEach(System.out::println);
     return finder + 1;
   }
+
+  public static int removeDuplicateWithSequence(int[] nums) {
+    int size = nums.length;
+    if (size <= 1) {
+      return size;
+    }
+
+    int finder = 0;
+    for (int i = 1; i < size; i++) {
+      if (nums[finder] != nums[i]) {
+        int temp = nums[i];
+        ++finder;
+        nums[i] = nums[finder];
+        nums[finder] = temp;
+      }
+    }
+
+    IntStream.of(nums).forEach(System.out::println);
+    return finder + 1;
+  }
 }
