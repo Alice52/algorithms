@@ -29,3 +29,9 @@ func TestRemoveDuplicateOfSortedArray(t *testing.T) {
     result := _array.RemoveDuplicateOfSortedArray([]int{1, 2, 2, 2, 4, 5, 5})
     fmt.Printf("length is: %v\n", result)
 }
+
+func TestRemoveDuplicateOfSortedArrayII(t *testing.T) {
+
+    result := _array.RemoveDuplicateOfSortedArrayII([]int{1, 2, 2, 2, 4, 5, 5}, 2)
+    fmt.Printf("length is: %v\n", result)
+}
