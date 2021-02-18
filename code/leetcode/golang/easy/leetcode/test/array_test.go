@@ -23,3 +23,9 @@ func TestTwoSum(t *testing.T) {
         fmt.Printf("cannot find index")
     }
 }
+
+func TestRemoveDuplicateOfSortedArray(t *testing.T) {
+
+    result := _array.RemoveDuplicateOfSortedArray([]int{1, 2, 2, 2, 4, 5, 5})
+    fmt.Printf("length is: %v\n", result)
+}
