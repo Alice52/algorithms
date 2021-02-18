@@ -1,4 +1,4 @@
-package list;
+package leetcode.list;
 
 import lombok.extern.slf4j.Slf4j;
 import model.leetcode.common.model.ListNode;
@@ -39,9 +39,12 @@ public class Intersection {
 
   /**
    * 1. hash<br>
-   * 2. two point<br>
-   *      - 最后一个节点也要参与计算, 所以是 pa == null
-   *      - 而不是 pa.next == null
+   * 2. two point:
+   *
+   * <pre>
+   *    1. 最后一个节点也要参与计算
+   *    2. 所以是 pa == null - 而不是 pa.next == null
+   *  </pre>
    *
    * <pre>
    *    1. condition
