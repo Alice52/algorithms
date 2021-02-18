@@ -35,3 +35,9 @@ func TestRemoveDuplicateOfSortedArrayII(t *testing.T) {
     result := _array.RemoveDuplicateOfSortedArrayII([]int{1, 2, 2, 2, 4, 5, 5}, 2)
     fmt.Printf("length is: %v\n", result)
 }
+
+func TestMoveZeroes2Tail(t *testing.T) {
+
+    result := _array.MoveZeroes2Tail([]int{1, 2, 0})
+    fmt.Printf("nums is: %v\n", result)
+}
