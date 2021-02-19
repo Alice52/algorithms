@@ -2,6 +2,7 @@ package model.leetcode.common.model;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author zack <br>
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @AllArgsConstructor
+@Slf4j
 public class ListNode<T> {
   public T value;
   public ListNode<T> nextNode;
@@ -26,5 +28,12 @@ public class ListNode<T> {
       dummyNode = node;
     }
     dummyNode.nextNode = head.nextNode;
+  }
+
+  public static void print(ListNode<Integer> node) {
+    while (node != null) {
+      log.info("{}", node.value);
+      node = node.nextNode;
+    }
   }
 }
