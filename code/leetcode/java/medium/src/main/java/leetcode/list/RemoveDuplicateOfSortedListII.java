@@ -1,4 +1,4 @@
-package leetcode.array;
+package leetcode.list;
 
 import lombok.extern.slf4j.Slf4j;
 import model.leetcode.common.model.ListNode;
@@ -13,7 +13,7 @@ import java.util.Optional;
  * @project leetcode <br>
  */
 @Slf4j
-public class RemoveDuplicateOfSortedList {
+public class RemoveDuplicateOfSortedListII {
   public static void main(String[] args) {
 
     ListNode<Integer> node =
