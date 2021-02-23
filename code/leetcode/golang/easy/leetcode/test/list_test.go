@@ -58,23 +58,3 @@ func TestGetIntersectionNode(t *testing.T) {
         fmt.Printf("intersection node value: %v\n", result.Val)
     }
 }
-
-func TestRemoveDuplicateOfSortedList(t *testing.T) {
-    node := &model.ListNode{
-        Val: 1,
-        Next: &model.ListNode{
-            Val: 2,
-            Next: &model.ListNode{
-                Val: 3,
-                Next: &model.ListNode{
-                    Val:  3,
-                    Next: nil,
-                },
-            },
-        },
-    }
-
-    result := list.RemoveDuplicateOfSortedList(node)
-    model.PrintListNode(result)
-
-}
