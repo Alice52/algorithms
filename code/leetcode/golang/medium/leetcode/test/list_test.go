@@ -3,7 +3,7 @@ package test
 import (
     "fmt"
     "golang/common/api/model"
-    _list "golang/medium/leetcode/list"
+    "golang/medium/leetcode/list"
     "testing"
 )
 
@@ -31,7 +31,7 @@ func TestAddTwoSum(t *testing.T) {
         },
     }
 
-    result := _list.AddTwoSum(a, b)
+    result := list.AddTwoSum(a, b)
     for result != nil {
         fmt.Print(result.Val)
         result = result.Next
@@ -55,7 +55,7 @@ func TestAddTwoSum(t *testing.T) {
         Next: nil,
     }
 
-    result2 := _list.AddTwoSum(a2, b2)
+    result2 := list.AddTwoSum(a2, b2)
     for result2 != nil {
         fmt.Print(result2.Val)
         result2 = result2.Next
@@ -65,6 +65,44 @@ func TestAddTwoSum(t *testing.T) {
 
 func TestMaxArea(t *testing.T) {
     nums := []int{1, 2, 3}
-    result := _list.MaxArea(nums)
+    result := list.MaxArea(nums)
     fmt.Println(result)
+}
+
+func TestRemoveDuplicateOfSortedList(t *testing.T) {
+    node := &model.ListNode{
+        Val: 1,
+        Next: &model.ListNode{
+            Val: 2,
+            Next: &model.ListNode{
+                Val: 3,
+                Next: &model.ListNode{
+                    Val:  3,
+                    Next: nil,
+                },
+            },
+        },
+    }
+
+    result := list.RemoveDuplicateOfSortedList(node)
+    model.PrintListNode(result)
+}
+
+func TestRemoveDuplicateOfSortedListII(t *testing.T) {
+    node := &model.ListNode{
+        Val: 1,
+        Next: &model.ListNode{
+            Val: 2,
+            Next: &model.ListNode{
+                Val: 3,
+                Next: &model.ListNode{
+                    Val:  3,
+                    Next: nil,
+                },
+            },
+        },
+    }
+
+    result := list.RemoveDuplicateOfSortedListII(node)
+    model.PrintListNode(result)
 }
