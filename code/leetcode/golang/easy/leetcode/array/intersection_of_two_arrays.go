@@ -1,5 +1,6 @@
 package array
 
+// issue-link: https://github.com/Alice52/Algorithms/issues/31
 func Intersection(nums1 []int, nums2 []int) []int {
 
     var result []int
