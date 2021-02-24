@@ -2,9 +2,7 @@ package leetcode.array;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.IntStream;
 
 /**
@@ -33,6 +31,11 @@ public class IntersectionOfTwoArrays {
    *        - Arrays.copyOf: {@link System#arraycopy(Object, int, Object, int, int)}
    * </pre>
    *
+   * <pre>
+   *     1. {@link HashSet#retainAll(Collection)}
+   *     2. set set1.retainAll(set2)
+   * </pre>
+   *
    * @param nums1 original nums
    * @param nums2 original nums
    * @return
@@ -40,7 +43,6 @@ public class IntersectionOfTwoArrays {
   public static int[] intersection(int[] nums1, int[] nums2) {
     int[] result = new int[0];
     HashMap<Integer, Boolean> map = new HashMap<>(nums1.length);
-
     for (int num : nums1) {
       map.put(num, true);
     }
