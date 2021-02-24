@@ -3,7 +3,6 @@ package leetcode.array;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.OptionalInt;
-import java.util.stream.IntStream;
 
 /**
  * issue-link: https://github.com/Alice52/Algorithms/issues/19
@@ -20,9 +19,8 @@ public class RemoveDuplicateOfSortedArrayIII {
         .ifPresent(System.out::println);
   }
 
-
   public static int removeDuplicate(int[] nums, int repeatedCount) {
 
-     return  0;
+    return 0;
   }
 }
