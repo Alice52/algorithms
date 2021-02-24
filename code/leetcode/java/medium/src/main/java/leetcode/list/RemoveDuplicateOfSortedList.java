@@ -44,7 +44,7 @@ public class RemoveDuplicateOfSortedList {
     ListNode first = new ListNode();
     ListNode finder = first;
 
-     finder.nextNode = head;
+    finder.nextNode = head;
     while (head != null) {
       if (head.nextNode != null && head.value.equals(head.nextNode.value)) {
         while (head.nextNode != null && head.value.equals(head.nextNode.value)) {
