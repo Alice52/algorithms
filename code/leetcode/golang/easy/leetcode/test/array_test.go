@@ -53,3 +53,10 @@ func TestIntersectionII(t *testing.T) {
     result := array.IntersectionII([]int{4, 9, 5}, []int{9, 4, 9, 8, 4})
     fmt.Printf("intersection ii is: %v\n", result)
 }
+
+func TestIntervalIntersection(t *testing.T) {
+
+    result := array.IntervalIntersection([][]int{{0, 2}, {5, 10}, {13, 23}, {24, 25}},
+        [][]int{{1, 5}, {8, 12}, {15, 24}, {25, 26}})
+    fmt.Printf("intersection ii is: %v\n", result)
+}
