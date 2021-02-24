@@ -2,17 +2,17 @@ package test
 
 import (
     "fmt"
-    _array "golang/easy/leetcode/array"
+    "golang/easy/leetcode/array"
     "testing"
 )
 
 func TestHello(t *testing.T) {
-    _array.Hello()
+    array.Hello()
 }
 
 func TestTwoSum(t *testing.T) {
 
-    result := _array.TwoSum(
+    result := array.TwoSum(
         []int{2, 7, 11, 15},
         26,
     )
@@ -26,18 +26,24 @@ func TestTwoSum(t *testing.T) {
 
 func TestRemoveDuplicateOfSortedArray(t *testing.T) {
 
-    result := _array.RemoveDuplicateOfSortedArray([]int{1, 2, 2, 2, 4, 5, 5})
+    result := array.RemoveDuplicateOfSortedArray([]int{1, 2, 2, 2, 4, 5, 5})
     fmt.Printf("length is: %v\n", result)
 }
 
 func TestRemoveDuplicateOfSortedArrayII(t *testing.T) {
 
-    result := _array.RemoveDuplicateOfSortedArrayII([]int{1, 2, 2, 2, 4, 5, 5}, 2)
+    result := array.RemoveDuplicateOfSortedArrayII([]int{1, 2, 2, 2, 4, 5, 5}, 2)
     fmt.Printf("length is: %v\n", result)
 }
 
 func TestMoveZeroes2Tail(t *testing.T) {
 
-    result := _array.MoveZeroes2Tail([]int{1, 2, 0})
+    result := array.MoveZeroes2Tail([]int{1, 2, 0})
     fmt.Printf("nums is: %v\n", result)
+}
+
+func TestIntersection(t *testing.T) {
+
+    result := array.Intersection([]int{1, 2, 2, 3}, []int{2, 2})
+    fmt.Printf("intersection is: %v\n", result)
 }
