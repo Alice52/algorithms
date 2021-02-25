@@ -66,3 +66,9 @@ func TestDuplicateJudgeLessSpecifiedCount(t *testing.T) {
     result := array.DuplicateJudgeLessSpecifiedCount([]int{1, 1, 1, 3}, 3)
     fmt.Printf("duplicate judge less specified count: %v\n", result)
 }
+
+func TestContainsNearbyDuplicate(t *testing.T) {
+
+    result := array.ContainsNearbyDuplicate([]int{1, 2, 3, 1, 2, 3}, 2)
+    fmt.Printf("contains nearby duplicate: %v\n", result)
+}
