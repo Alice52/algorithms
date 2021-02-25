@@ -1,7 +1,5 @@
 package leetcode.hash;
 
-import leetcode.array.SumFourII;
-
 /**
  * @see leetcode.array.SumFourII
  * @author zack <br>
