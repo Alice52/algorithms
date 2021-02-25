@@ -11,7 +11,7 @@ import java.util.OptionalInt;
  * @create 2021-02-15 18:39 <br>
  * @project leetcode <br>
  */
-public class FourSumII {
+public class SumFourII {
 
   public static void main(String[] args) {
 

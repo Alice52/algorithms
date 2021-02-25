@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
  * @create 2021-02-15 11:13 <br>
  * @project leetcode <br>
  */
-public class FourSum {
+public class SumFour {
 
   public static void main(String[] args) {
     final int[] nums = {-2, -1, -1, 1, 1, 2, 2};

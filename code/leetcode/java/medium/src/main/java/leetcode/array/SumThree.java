@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  * @project leetcode <br>
  */
 @Slf4j
-public class ThreeSum {
+public class SumThree {
 
   public static void main(String[] args) {
     int[] nums = new int[] {-1, 0, 1, 2, -1, -4};

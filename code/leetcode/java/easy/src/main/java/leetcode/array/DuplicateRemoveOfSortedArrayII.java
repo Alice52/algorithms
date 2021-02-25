@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
  * @project leetcode <br>
  */
 @Slf4j
-public class RemoveDuplicateOfSortedArrayII {
+public class DuplicateRemoveOfSortedArrayII {
 
   public static void main(String[] args) {
     OptionalInt.of(removeDuplicate(new int[] {0, 0, 1, 1, 1, 1, 2, 3, 3}, 2))
@@ -21,7 +21,7 @@ public class RemoveDuplicateOfSortedArrayII {
   }
 
   /**
-   * Core: 与 {@link RemoveDuplicateOfSortedArray#removeDuplicate(int[])} 一样的思路, <br>
+   * Core: 与 {@link DuplicateRemoveOfSortedArray#removeDuplicate(int[])} 一样的思路, <br>
    * 只是新增一个 count 变量记录 finder 下标值的次数: count <= 2 时则 finder 正常移动[即使元素相同]
    *
    * @param nums

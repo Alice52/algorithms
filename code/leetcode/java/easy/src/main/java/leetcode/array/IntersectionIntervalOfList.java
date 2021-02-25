@@ -17,7 +17,7 @@ import java.util.stream.Stream;
  * @project leetcode <br>
  */
 @Slf4j
-public class IntervalIntersection {
+public class IntersectionIntervalOfList {
 
   public static void main(String[] args) {
 
