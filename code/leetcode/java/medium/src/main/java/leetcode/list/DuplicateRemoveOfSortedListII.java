@@ -13,7 +13,7 @@ import java.util.Optional;
  * @project leetcode <br>
  */
 @Slf4j
-public class RemoveDuplicateOfSortedListII {
+public class DuplicateRemoveOfSortedListII {
   public static void main(String[] args) {
 
     ListNode<Integer> node =

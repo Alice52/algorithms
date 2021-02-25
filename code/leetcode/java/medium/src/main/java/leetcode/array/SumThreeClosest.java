@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @create 2021-02-14 18:05 <br>
  * @project leetcode <br>
  */
-public class ThreeSumClosest {
+public class SumThreeClosest {
 
   /**
    * Timing: O(n^2)

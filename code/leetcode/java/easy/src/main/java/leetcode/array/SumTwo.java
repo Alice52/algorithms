@@ -26,7 +26,7 @@ import java.util.Optional;
  * @project leetcode <br>
  */
 @Slf4j
-public class TwoSum {
+public class SumTwo {
   public static void main(String[] args) {
     log.info("hello algorithms *** ");
 

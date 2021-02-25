@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
  * @project leetcode <br>
  */
 @Slf4j
-public class RemoveDuplicateOfSortedArray {
+public class DuplicateRemoveOfSortedArray {
   public static void main(String[] args) {
 
     OptionalInt.of(removeDuplicate(new int[] {1, 2, 2, 2, 4, 5, 5})).ifPresent(System.out::println);
