@@ -62,7 +62,7 @@ public class JosephRing {
     ListNode<Integer> head = new ListNode();
 
     ListNode<Integer> dummyNode = head;
-    ListNode.createCircleNode(head, dummyNode, totalN);
+    ListNode.generateCircleNode(head, dummyNode, totalN);
 
     // 2. 求约瑟夫环出 queue 顺序
     List<Integer> result = new ArrayList<>();

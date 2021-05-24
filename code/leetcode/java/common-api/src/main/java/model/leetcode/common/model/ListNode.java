@@ -1,5 +1,6 @@
 package model.leetcode.common.model;
 
+import cn.hutool.core.util.ObjectUtil;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,27 +14,44 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 @Slf4j
 public class ListNode<T> {
-  public T value;
-  public ListNode<T> nextNode;
+    public T value;
+    public ListNode<T> nextNode;
 
-  public ListNode(T value) {
-    this.value = value;
-  }
-
-  public static void createCircleNode(ListNode head, ListNode dummyNode, int num) {
-
-    for (int i = 1; i <= num; i++) {
-      ListNode node = new ListNode(i);
-      dummyNode.nextNode = node;
-      dummyNode = node;
+    public ListNode(T value) {
+        this.value = value;
     }
-    dummyNode.nextNode = head.nextNode;
-  }
 
-  public static void print(ListNode<Integer> node) {
-    while (node != null) {
-      log.info("{}", node.value);
-      node = node.nextNode;
+    public static <T> ListNode<T> generateNode(T... args) {
+
+        ListNode<T> dummy = new ListNode();
+        if(ObjectUtil.isNull(args) || args.length ==0) {
+            return dummy;
+        }
+
+        ListNode<T> head = dummy;
+        for (T arg : args) {
+            ListNode<T> node = new ListNode(arg);
+            dummy.nextNode = node;
+            dummy = node;
+        }
+
+        return head.nextNode;
     }
-  }
+
+    public static <T> void generateCircleNode(ListNode<T> head, ListNode<T> dummyNode, int num) {
+
+        for (int i = 1; i <= num; i++) {
+            ListNode node = new ListNode(i);
+            dummyNode.nextNode = node;
+            dummyNode = node;
+        }
+        dummyNode.nextNode = head.nextNode;
+    }
+
+    public static <T> void print(ListNode<T> node) {
+        while (node != null) {
+            log.info("{}", node.value);
+            node = node.nextNode;
+        }
+    }
 }
