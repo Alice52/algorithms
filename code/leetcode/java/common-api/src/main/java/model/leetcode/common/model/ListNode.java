@@ -24,7 +24,7 @@ public class ListNode<T> {
     public static <T> ListNode<T> generateNode(T... args) {
 
         ListNode<T> dummy = new ListNode();
-        if(ObjectUtil.isNull(args) || args.length ==0) {
+        if (ObjectUtil.isNull(args) || args.length == 0) {
             return dummy;
         }
 

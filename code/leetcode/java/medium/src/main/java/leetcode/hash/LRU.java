@@ -13,28 +13,28 @@ import java.util.Map;
 @Slf4j
 public class LRU<K, V> extends LinkedHashMap<K, V> {
 
-  private int initialCapacity;
+    private int initialCapacity;
 
-  public LRU(int initialCapacity) {
-    super(initialCapacity, 0.75f, true);
-    this.initialCapacity = initialCapacity;
-  }
+    public LRU(int initialCapacity) {
+        super(initialCapacity, 0.75f, true);
+        this.initialCapacity = initialCapacity;
+    }
 
-  @Override
-  protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
-    return super.size() > initialCapacity;
-  }
+    public static void main(String[] args) {
 
-  public static void main(String[] args) {
+        LRU<Integer, Integer> lru = new LRU<Integer, Integer>(3);
 
-    LRU<Integer, Integer> lru = new LRU<Integer, Integer>(3);
+        lru.put(1, 1);
+        lru.put(2, 2);
+        lru.put(3, 3);
 
-    lru.put(1, 1);
-    lru.put(2, 2);
-    lru.put(3, 3);
+        lru.get(2);
+        lru.put(6, 6);
+        log.info("keys: {}", lru.keySet());
+    }
 
-    lru.get(2);
-    lru.put(6, 6);
-    log.info("keys: {}", lru.keySet());
-  }
+    @Override
+    protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
+        return super.size() > initialCapacity;
+    }
 }

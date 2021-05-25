@@ -16,147 +16,147 @@ import java.util.Optional;
 @Slf4j
 public class AddTwoNumber {
 
-  public static void main(String[] args) {
+    public static void main(String[] args) {
 
-    // test-01
-    ListNode<Integer> a = new ListNode<>(2, new ListNode<>(4, new ListNode<>(3)));
-    ListNode<Integer> b = new ListNode<>(5, new ListNode<>(6, new ListNode<>(4)));
+        // test-01
+        ListNode<Integer> a = new ListNode<>(2, new ListNode<>(4, new ListNode<>(3)));
+        ListNode<Integer> b = new ListNode<>(5, new ListNode<>(6, new ListNode<>(4)));
 
-    ListNode<Integer> nodeT1 = addTwoNumber(a, b);
-    while (nodeT1 != null) {
-      System.out.print(nodeT1.val);
-      nodeT1 = nodeT1.next;
+        ListNode<Integer> nodeT1 = addTwoNumber(a, b);
+        while (nodeT1 != null) {
+            System.out.print(nodeT1.val);
+            nodeT1 = nodeT1.next;
+        }
+
+        Optional.of(1).ifPresent(System.out::println);
+
+        // test-02
+        ListNode<Integer> a2 =
+                new ListNode<Integer>(9, new ListNode<Integer>(9, new ListNode<Integer>(9)));
+        ListNode<Integer> b2 = new ListNode<Integer>(1);
+        ListNode<Integer> nodeT2 = addTwoNumber(a2, b2);
+        while (nodeT2 != null) {
+            System.out.print(nodeT2.val);
+            nodeT2 = nodeT2.next;
+        }
     }
 
-    Optional.of(1).ifPresent(System.out::println);
+    /**
+     * Core thinking:
+     *
+     * <pre>
+     *     1. non-negative list, so flow should be below:
+     *          dummyHead -> A => dummyHead -> B -> A
+     *     2. make dummyHead
+     * </pre>
+     *
+     * @param a
+     * @param b
+     * @return
+     */
+    public static ListNode<Integer> addTwoNumber(ListNode<Integer> a, ListNode<Integer> b) {
+        if (a == null || b == null) {
+            return null;
+        }
 
-    // test-02
-    ListNode<Integer> a2 =
-        new ListNode<Integer>(9, new ListNode<Integer>(9, new ListNode<Integer>(9)));
-    ListNode<Integer> b2 = new ListNode<Integer>(1);
-    ListNode<Integer> nodeT2 = addTwoNumber(a2, b2);
-    while (nodeT2 != null) {
-      System.out.print(nodeT2.val);
-      nodeT2 = nodeT2.next;
-    }
-  }
+        ListNode<Integer> dummyHead = new ListNode<Integer>(-1);
+        int tempSum, carry = 0;
 
-  /**
-   * Core thinking:
-   *
-   * <pre>
-   *     1. non-negative list, so flow should be below:
-   *          dummyHead -> A => dummyHead -> B -> A
-   *     2. make dummyHead
-   * </pre>
-   *
-   * @param a
-   * @param b
-   * @return
-   */
-  public static ListNode<Integer> addTwoNumber(ListNode<Integer> a, ListNode<Integer> b) {
-    if (a == null || b == null) {
-      return null;
-    }
+        // judgement and worker
+        while (a != null || b != null) {
+            tempSum = carry;
+            if (a != null) {
+                tempSum += a.val;
+                a = a.next;
+            }
 
-    ListNode<Integer> dummyHead = new ListNode<Integer>(-1);
-    int tempSum, carry = 0;
+            if (b != null) {
+                tempSum += b.val;
+                b = b.next;
+            }
 
-    // judgement and worker
-    while (a != null || b != null) {
-      tempSum = carry;
-      if (a != null) {
-        tempSum += a.val;
-        a = a.next;
-      }
+            carry = tempSum / 10;
 
-      if (b != null) {
-        tempSum += b.val;
-        b = b.next;
-      }
+            // core: dummyHead -> A => dummyHead -> B -> A
+            ListNode<Integer> newNode = new ListNode<Integer>(tempSum % 10);
+            newNode.next = dummyHead.next;
+            dummyHead.next = newNode;
+        }
 
-      carry = tempSum / 10;
+        if (carry > 0) {
+            ListNode<Integer> newNode = new ListNode<Integer>(carry);
+            newNode.next = dummyHead.next;
+            dummyHead.next = newNode;
+        }
 
-      // core: dummyHead -> A => dummyHead -> B -> A
-      ListNode<Integer> newNode = new ListNode<Integer>(tempSum % 10);
-      newNode.next = dummyHead.next;
-      dummyHead.next = newNode;
+        return dummyHead.next;
     }
 
-    if (carry > 0) {
-      ListNode<Integer> newNode = new ListNode<Integer>(carry);
-      newNode.next = dummyHead.next;
-      dummyHead.next = newNode;
+    /**
+     * Ignore this implementation due to we have define link node.<br>
+     * Which use jdk api.
+     *
+     * @param a
+     * @param b
+     * @return linked list value.
+     */
+    @Deprecated
+    public static LinkedList<Integer> addTwoNumberError(
+            Collection<Integer> a, Collection<Integer> b) {
+
+        LinkedList<Integer> list = new LinkedList<>();
+
+        int carry = 0, bitSum;
+        final Iterator<Integer> aIterator = a.iterator();
+        final Iterator<Integer> bIterator = b.iterator();
+        // loop a list for calculate
+        while (aIterator.hasNext()) {
+            // b have next element.
+            int aValue = aIterator.next();
+            if (bIterator.hasNext()) {
+                int bValue = bIterator.next();
+                bitSum = aValue + bValue + carry;
+            } else {
+                bitSum = carry + aValue;
+            }
+
+            list.offerFirst(bitSum % 10);
+            carry = bitSum / 10;
+        }
+
+        // a has no element, but  b has next element.
+        while (bIterator.hasNext()) {
+            bitSum = carry + bIterator.next();
+            list.offerFirst(bitSum % 10);
+            carry = bitSum / 10;
+        }
+
+        Optional.of(carry).filter(x -> x != 0).ifPresent(y -> list.offerFirst(y));
+
+        return list;
     }
 
-    return dummyHead.next;
-  }
+    public void testError() {
+        LinkedList<Integer> aList =
+                new LinkedList<Integer>() {
+                    {
+                        add(9);
+                        add(9);
+                        add(9);
+                        add(9);
+                        add(9);
+                    }
+                };
 
-  /**
-   * Ignore this implementation due to we have define link node.<br>
-   * Which use jdk api.
-   *
-   * @param a
-   * @param b
-   * @return linked list value.
-   */
-  @Deprecated
-  public static LinkedList<Integer> addTwoNumberError(
-      Collection<Integer> a, Collection<Integer> b) {
+        LinkedList<Integer> bList =
+                new LinkedList<Integer>() {
+                    {
+                        add(1);
+                    }
+                };
 
-    LinkedList<Integer> list = new LinkedList<>();
+        LinkedList<Integer> results = addTwoNumberError(aList, bList);
 
-    int carry = 0, bitSum;
-    final Iterator<Integer> aIterator = a.iterator();
-    final Iterator<Integer> bIterator = b.iterator();
-    // loop a list for calculate
-    while (aIterator.hasNext()) {
-      // b have next element.
-      int aValue = aIterator.next();
-      if (bIterator.hasNext()) {
-        int bValue = bIterator.next();
-        bitSum = aValue + bValue + carry;
-      } else {
-        bitSum = carry + aValue;
-      }
-
-      list.offerFirst(bitSum % 10);
-      carry = bitSum / 10;
+        results.forEach(System.out::print);
     }
-
-    // a has no element, but  b has next element.
-    while (bIterator.hasNext()) {
-      bitSum = carry + bIterator.next();
-      list.offerFirst(bitSum % 10);
-      carry = bitSum / 10;
-    }
-
-    Optional.of(carry).filter(x -> x != 0).ifPresent(y -> list.offerFirst(y));
-
-    return list;
-  }
-
-  public void testError() {
-    LinkedList<Integer> aList =
-        new LinkedList<Integer>() {
-          {
-            add(9);
-            add(9);
-            add(9);
-            add(9);
-            add(9);
-          }
-        };
-
-    LinkedList<Integer> bList =
-        new LinkedList<Integer>() {
-          {
-            add(1);
-          }
-        };
-
-    LinkedList<Integer> results = addTwoNumberError(aList, bList);
-
-    results.forEach(System.out::print);
-  }
 }

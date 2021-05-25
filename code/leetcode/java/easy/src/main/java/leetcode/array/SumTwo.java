@@ -27,46 +27,46 @@ import java.util.Optional;
  */
 @Slf4j
 public class SumTwo {
-  public static void main(String[] args) {
-    log.info("hello algorithms *** ");
+    public static void main(String[] args) {
+        log.info("hello algorithms *** ");
 
-    int[] nums = new int[] {2, 7, 11, 15};
-    int target = 26;
-    int[] results = twoSum(nums, target);
+        int[] nums = new int[] {2, 7, 11, 15};
+        int target = 26;
+        int[] results = twoSum(nums, target);
 
-    Optional.ofNullable(results)
-        .ifPresent(x -> Arrays.stream(results).forEach(System.out::println));
-  }
-
-  /**
-   * containsKey is O(1)
-   *
-   * <pre>
-   *    core thinking:
-   *      1. build one map to store nums element, which key is num value, and value is index
-   * </pre>
-   *
-   * @param nums origin arrays
-   * @param target target value
-   * @return index or null
-   */
-  public static int[] twoSum(int[] nums, int target) {
-    Assert.notNull(nums);
-    Assert.notNull(target);
-
-    // key num value, and value is index
-    Map<Integer, Integer> map = new HashMap<>(10);
-
-    int size = nums.length;
-    for (int i = 0; i < size; i++) {
-      int repair = target - nums[i];
-      if (map.containsKey(repair)) {
-        return new int[] {map.get(repair), i};
-      } else {
-        map.put(nums[i], i);
-      }
+        Optional.ofNullable(results)
+                .ifPresent(x -> Arrays.stream(results).forEach(System.out::println));
     }
 
-    return null;
-  }
+    /**
+     * containsKey is O(1)
+     *
+     * <pre>
+     *    core thinking:
+     *      1. build one map to store nums element, which key is num value, and value is index
+     * </pre>
+     *
+     * @param nums origin arrays
+     * @param target target value
+     * @return index or null
+     */
+    public static int[] twoSum(int[] nums, int target) {
+        Assert.notNull(nums);
+        Assert.notNull(target);
+
+        // key num value, and value is index
+        Map<Integer, Integer> map = new HashMap<>(10);
+
+        int size = nums.length;
+        for (int i = 0; i < size; i++) {
+            int repair = target - nums[i];
+            if (map.containsKey(repair)) {
+                return new int[] {map.get(repair), i};
+            } else {
+                map.put(nums[i], i);
+            }
+        }
+
+        return null;
+    }
 }

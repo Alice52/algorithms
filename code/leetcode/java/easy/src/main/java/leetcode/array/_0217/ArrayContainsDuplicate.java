@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Optional;
 
 /**
+ * function: 数组内是否有重复元素<br>
  * issue-link: https://github.com/Alice52/Algorithms/issues/37<br>
  * leetcode-link: https://leetcode.com/problems/contains-duplicate/<br>
  *
@@ -19,6 +20,27 @@ public class ArrayContainsDuplicate {
 
     public static void main(String[] args) {
         Optional.of(judgeDuplicateBest(new int[] {1, 2, 3, 1})).ifPresent(System.out::println);
+    }
+
+    /**
+     * Core thinking:
+     *
+     * <pre>
+     *     1. 不引进其他的数据结构: 需要 sorted array
+     *     2. 遍历数组, num[i] == num[i+1] 则返回 true
+     * </pre>
+     *
+     * @param nums
+     * @return
+     */
+    public static boolean judgeDuplicateBest(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == nums[i + 1]) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -42,27 +64,6 @@ public class ArrayContainsDuplicate {
             set.add(num);
         }
 
-        return false;
-    }
-
-    /**
-     * Core thinking:
-     *
-     * <pre>
-     *     1. 不引进其他的数据结构: 需要 sorted array
-     *     2. 遍历数组, num[i] == num[i+1] 则返回 true
-     * </pre>
-     *
-     * @param nums
-     * @return
-     */
-    public static boolean judgeDuplicateBest(int[] nums) {
-        Arrays.sort(nums);
-        for (int i = 0; i < nums.length - 1; i++) {
-            if (nums[i] == nums[i + 1]) {
-                return true;
-            }
-        }
         return false;
     }
 }
