@@ -1,4 +1,4 @@
-package leetcode.list;
+package leetcode.list._0082;
 
 import lombok.extern.slf4j.Slf4j;
 import model.leetcode.common.model.ListNode;
@@ -6,6 +6,7 @@ import model.leetcode.common.model.ListNode;
 import java.util.Optional;
 
 /**
+ * Function: 有序列表元素去重<br>
  * issue-link: https://github.com/Alice52/Algorithms/issues/20<br>
  * leetcode-link: https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/ <br>
  *
@@ -14,11 +15,56 @@ import java.util.Optional;
  * @project leetcode <br>
  */
 @Slf4j
-public class DuplicateRemoveOfSortedList {
+public class DeDuplicateSortedList {
     public static void main(String[] args) {
 
-        ListNode node = ListNode.generateNode(0, 1, 3, 3, 3, 4);
+        ListNode node = ListNode.generateNode(0, 0, 0);
         Optional.ofNullable(deleteIfDuplicateBestPractice(node)).ifPresent(x -> ListNode.print(x));
+    }
+
+    /**
+     * Core Thinking:
+     *
+     * <pre>
+     *     1. finder 表示不重复的元素, 搞一个结果指针指向 finder
+     *     2. 由于第一个元素就可能重复, 所以 finder 指针在 head 的前一位
+     *     3. 遍历列表, 比较 head 和 head.next 值
+     *          - 不同则说明 head 不重复[finder指针跟进一个]
+     *          - 否则找到最后一个重复的元素
+     *     4. 考虑最后一个元素重复问题
+     * </pre>
+     *
+     * @param head
+     * @return
+     */
+    public static ListNode deDuplicate(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        // 存放的时不同的元素
+        ListNode finder = new ListNode();
+        ListNode result = finder;
+        finder.next = head;
+        while (head != null) {
+            if (head.next != null && head.next.val.equals(head.val)) {
+                while (head.next != null && head.next.val.equals(head.val)) {
+                    // 得到最后一个相同的元素
+                    head = head.next;
+                }
+            } else {
+                finder.next = head;
+                finder = finder.next;
+            }
+
+            if (head.next == null) {
+                finder.next = null;
+            }
+
+            head = head.next;
+        }
+
+        return result.next;
     }
 
     /**
@@ -36,26 +82,25 @@ public class DuplicateRemoveOfSortedList {
      * @return de-duplicate node
      */
     public static ListNode<Integer> deleteIfDuplicateBestPractice(ListNode<Integer> head) {
-
         ListNode first = new ListNode();
         ListNode finder = first;
 
-        finder.nextNode = head;
+        finder.next = head;
         while (head != null) {
-            if (head.nextNode != null && head.value.equals(head.nextNode.value)) {
-                while (head.nextNode != null && head.value.equals(head.nextNode.value)) {
-                    head = head.nextNode;
+            if (head.next != null && head.val.equals(head.next.val)) {
+                while (head.next != null && head.val.equals(head.next.val)) {
+                    head = head.next;
                 }
 
-                finder.nextNode = head.nextNode;
+                finder.next = head.next;
             } else {
-                finder = finder.nextNode;
+                finder = finder.next;
             }
 
-            head = head.nextNode;
+            head = head.next;
         }
 
-        return first.nextNode;
+        return first.next;
     }
 
     /**
@@ -75,18 +120,19 @@ public class DuplicateRemoveOfSortedList {
      * @param head
      * @return
      */
+    @Deprecated
     public static ListNode<Integer> deleteIfDuplicate(ListNode<Integer> head) {
         // 1. head 长度小于 2 时, 直接返回
-        if (head == null || head.nextNode == null) {
+        if (head == null || head.next == null) {
             return head;
         }
 
         boolean repeated = false;
         ListNode<Integer> first = null, finder = head;
-        while (finder.nextNode != null) {
+        while (finder.next != null) {
             // 2. 如果 finder 和 finder.next相同, 则删除 finder.next
-            if (finder.value.equals(finder.nextNode.value)) {
-                finder.nextNode = finder.nextNode.nextNode;
+            if (finder.val.equals(finder.next.val)) {
+                finder.next = finder.next.next;
                 repeated = true;
                 continue;
             }
@@ -96,19 +142,19 @@ public class DuplicateRemoveOfSortedList {
             if (!repeated && first == null) {
                 first = finder;
                 head = finder;
-                finder = finder.nextNode;
+                finder = finder.next;
                 continue;
             }
 
             if (repeated) {
                 // 4. 如果有重复则删除 finder
-                head.nextNode = finder.nextNode;
-                finder = head.nextNode;
+                head.next = finder.next;
+                finder = head.next;
             } else {
                 // 5. 不重复则说明 finder 是不重复元素, 移动 finder 到下一位, 且注意同步移动 head
                 // 使得 head 应用处于 finder 的上一位置: 为了删除 finder 节点本身
-                finder = finder.nextNode;
-                head = head.nextNode;
+                finder = finder.next;
+                head = head.next;
             }
             repeated = false;
         }
@@ -117,7 +163,7 @@ public class DuplicateRemoveOfSortedList {
         //    - 如果重复则最后一个元素就舍弃,
         //    - 如果不重复且 first 为 null 则将 first 指向 finder
         if (repeated) {
-            head.nextNode = null;
+            head.next = null;
         } else if (first == null) {
             first = finder;
         }

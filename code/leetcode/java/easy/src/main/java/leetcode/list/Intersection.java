@@ -26,15 +26,15 @@ public class Intersection {
     ListNode<Integer> nodeB = new ListNode<>(11);
     ListNode<Integer> nodeB2 = new ListNode<>(12);
 
-    nodeA.nextNode = nodeA2;
-    nodeA2.nextNode = nodeA3;
-    nodeA3.nextNode = nodeA4;
-    nodeA4.nextNode = nodeA5;
+    nodeA.next = nodeA2;
+    nodeA2.next = nodeA3;
+    nodeA3.next = nodeA4;
+    nodeA4.next = nodeA5;
 
-    nodeB.nextNode = nodeB2;
-    nodeB2.nextNode = null;
+    nodeB.next = nodeB2;
+    nodeB2.next = null;
 
-    Optional.ofNullable(getIntersectionNode(nodeA, nodeB)).ifPresent(x -> log.info("{}", x.value));
+    Optional.ofNullable(getIntersectionNode(nodeA, nodeB)).ifPresent(x -> log.info("{}", x.val));
   }
 
   /**
@@ -59,8 +59,8 @@ public class Intersection {
 
     ListNode pa = headA, pb = headB;
     while (pa != pb) {
-      pa = (pa == null) ? headB : pa.nextNode;
-      pb = (pb == null) ? headA : pb.nextNode;
+      pa = (pa == null) ? headB : pa.next;
+      pb = (pb == null) ? headA : pb.next;
     }
 
     return pa;

@@ -1,4 +1,4 @@
-package leetcode.list;
+package leetcode.list._0083;
 
 import lombok.extern.slf4j.Slf4j;
 import model.leetcode.common.model.ListNode;
@@ -14,14 +14,15 @@ import java.util.Optional;
  * @project leetcode <br>
  */
 @Slf4j
-public class DuplicateRemoveOfSortedListII {
+public class DeDuplicateSortedListCount {
     public static void main(String[] args) {
 
-        ListNode node = ListNode.generateNode(1, 2, 2, 3, 3, 3);
+        ListNode node = ListNode.generateNode(1, 2, 2, 3);
         Optional.ofNullable(deleteDuplicates(node)).ifPresent(ListNode::print);
     }
 
     /**
+     * function: 保留一个相同元素的列表去重<br>
      * Core thinking:
      *
      * <pre>
@@ -35,21 +36,25 @@ public class DuplicateRemoveOfSortedListII {
      * @return
      */
     public static ListNode<Integer> deleteDuplicates(ListNode<Integer> head) {
-        if (head == null || head.nextNode == null) {
+
+        if (head == null || head.next == null) {
             return head;
         }
 
-        ListNode finder = head, first = head;
-        head = head.nextNode;
+        ListNode finder = head;
+        ListNode first = finder;
+        head = head.next;
         while (head != null) {
-            if (head.value != finder.value) {
-                finder.nextNode = head;
-                finder = finder.nextNode;
-            } else {
-                finder.nextNode = head.nextNode;
+            if (!finder.val.equals(head.val)) {
+                finder.next = head;
+                finder = finder.next;
             }
+            head = head.next;
 
-            head = head.nextNode;
+            // 链表最后一个元素相同的问题
+            if (head == null) {
+                finder.next = null;
+            }
         }
 
         return first;

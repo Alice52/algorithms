@@ -24,16 +24,16 @@ public class Circle {
     ListNode<Integer> node5 = new ListNode<>(5);
     ListNode<Integer> node6 = new ListNode<>(6);
 
-    node1.nextNode = node2;
-    node2.nextNode = node3;
-    node3.nextNode = node4;
-    node4.nextNode = node5;
-    node5.nextNode = node6;
-    node6.nextNode = node2;
+    node1.next = node2;
+    node2.next = node3;
+    node3.next = node4;
+    node4.next = node5;
+    node5.next = node6;
+    node6.next = node2;
 
     Optional.ofNullable(judgeCircle(node1)).ifPresent(System.out::println);
 
-    Optional.ofNullable(getCircleNode(node1)).ifPresent(x -> log.info("{}", x.value));
+    Optional.ofNullable(getCircleNode(node1)).ifPresent(x -> log.info("{}", x.val));
 
     Optional.of(getCircleLength(node1)).ifPresent(System.out::println);
   }
@@ -55,19 +55,19 @@ public class Circle {
 
     // if node size is lt 2, it cannot contains circle
 
-    ListNode<Integer> slow = node.nextNode;
-    ListNode<Integer> fast = node.nextNode.nextNode;
+    ListNode<Integer> slow = node.next;
+    ListNode<Integer> fast = node.next.next;
 
     while (slow != null && fast != null) {
       if (slow == fast) {
         return slow;
       }
 
-      if (fast.nextNode == null) {
+      if (fast.next == null) {
         return null;
       }
-      slow = slow.nextNode;
-      fast = fast.nextNode.nextNode;
+      slow = slow.next;
+      fast = fast.next.next;
     }
 
     return null;
@@ -90,8 +90,8 @@ public class Circle {
     ListNode<Integer> fast = node;
 
     while (slow != fast) {
-      slow = slow.nextNode;
-      fast = fast.nextNode;
+      slow = slow.next;
+      fast = fast.next;
     }
 
     return slow;
@@ -110,12 +110,12 @@ public class Circle {
       return 0;
     }
 
-    ListNode<Integer> slow = meetPtrNode.nextNode;
+    ListNode<Integer> slow = meetPtrNode.next;
 
     int count = 1;
     while (slow != meetPtrNode) {
       count++;
-      slow = slow.nextNode;
+      slow = slow.next;
     }
 
     return count;

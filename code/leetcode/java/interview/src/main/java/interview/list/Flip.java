@@ -24,26 +24,26 @@ public class Flip {
 
     ListNode<Integer> listNode = flipNodeV2(node);
     while (listNode != null) {
-      Optional.ofNullable(listNode.value).ifPresent(System.out::println);
-      listNode = listNode.nextNode;
+      Optional.ofNullable(listNode.val).ifPresent(System.out::println);
+      listNode = listNode.next;
     }
   }
 
   public static void flipByRecursion(ListNode<Integer> node) {
-    if (node.nextNode != null) {
-      flipByRecursion(node.nextNode);
+    if (node.next != null) {
+      flipByRecursion(node.next);
     }
-    log.info("{}", node.value);
+    log.info("{}", node.val);
   }
 
   public static void flipByStack(ListNode<Integer> node) {
 
     Stack<Integer> stack = new Stack<>();
-    while (node.nextNode != null) {
-      stack.push(node.value);
-      node = node.nextNode;
+    while (node.next != null) {
+      stack.push(node.val);
+      node = node.next;
     }
-    stack.push(node.value);
+    stack.push(node.val);
 
     while (!stack.empty()) {
       log.info("{}", stack.pop());
@@ -65,13 +65,13 @@ public class Flip {
    */
   public static ListNode<Integer> flipNode(ListNode<Integer> node) {
     ListNode<Integer> pre, next;
-    next = node.nextNode;
+    next = node.next;
     pre = node;
-    pre.nextNode = null;
+    pre.next = null;
 
     while (next != null) {
-      ListNode temp = next.nextNode;
-      next.nextNode = pre;
+      ListNode temp = next.next;
+      next.next = pre;
       pre = next;
 
       next = temp;
@@ -86,8 +86,8 @@ public class Flip {
     ListNode<Integer> pre = null;
 
     while (cur != null) {
-      ListNode<Integer> temp = cur.nextNode;
-      cur.nextNode = pre;
+      ListNode<Integer> temp = cur.next;
+      cur.next = pre;
       pre = cur;
 
       cur = temp;

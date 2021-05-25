@@ -66,28 +66,28 @@ public class JosephRing {
 
     // 2. 求约瑟夫环出 queue 顺序
     List<Integer> result = new ArrayList<>();
-    head = head.nextNode;
+    head = head.next;
     // startK > 1 的话, 就移动 head 指针使得 count 依旧是从 1 开始计数
     while (startK % totalN != 1) {
-      head = head.nextNode;
+      head = head.next;
       startK--;
     }
 
     int count = 1;
     // 循环退出的条件是最后只剩一个节点, 也就是这个结点的下一个节点是它本身
-    while (head.nextNode != head) {
+    while (head.next != head) {
       // 计算 outM
       if (count == outM - 1) {
-        result.add(head.nextNode.value);
-        head.nextNode = head.nextNode.nextNode;
+        result.add(head.next.val);
+        head.next = head.next.next;
         count = 1;
       } else {
         count++;
       }
-      head = head.nextNode;
+      head = head.next;
     }
 
-    result.add(head.value);
+    result.add(head.val);
     return result;
   }
 }

@@ -28,20 +28,20 @@ public class Intersect {
     ListNode<Integer> node12 = new ListNode<>(12);
     ListNode<Integer> node13 = new ListNode<>(13);
 
-    node1.nextNode = node2;
-    node2.nextNode = node3;
-    node3.nextNode = node4;
-    node4.nextNode = node5;
-    node5.nextNode = node6;
-    node6.nextNode = node7;
+    node1.next = node2;
+    node2.next = node3;
+    node3.next = node4;
+    node4.next = node5;
+    node5.next = node6;
+    node6.next = node7;
 
-    node11.nextNode = node12;
-    node12.nextNode = node13;
-    node13.nextNode = node3;
+    node11.next = node12;
+    node12.next = node13;
+    node13.next = node3;
 
     Optional.of(judgeListIntersection(node1, node11)).ifPresent(System.out::println);
     Optional.ofNullable(getNodeOfTwoIntersection(node1, node11))
-        .ifPresent(x -> log.info("{}", x.value));
+        .ifPresent(x -> log.info("{}", x.val));
 
     OptionalInt.of(getIntersectionLength(node1, node11)).ifPresent(System.out::println);
   }
@@ -64,7 +64,7 @@ public class Intersect {
     int count = 0;
     while (node != null) {
       count++;
-      node = node.nextNode;
+      node = node.next;
     }
 
     return count;
@@ -81,8 +81,8 @@ public class Intersect {
     ListNode pa = headA, pb = headB;
 
     while (pa != pb) {
-      pa = (pa != null) ? pa.nextNode : headB;
-      pb = (pb != null) ? pb.nextNode : headA;
+      pa = (pa != null) ? pa.next : headB;
+      pb = (pb != null) ? pb.next : headA;
     }
 
     return pa;
@@ -109,12 +109,12 @@ public class Intersect {
       return false;
     }
 
-    while (a.nextNode != null) {
-      a = a.nextNode;
+    while (a.next != null) {
+      a = a.next;
     }
 
-    while (b.nextNode != null) {
-      b = b.nextNode;
+    while (b.next != null) {
+      b = b.next;
     }
 
     return a == b;

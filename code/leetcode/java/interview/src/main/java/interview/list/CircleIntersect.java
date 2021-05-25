@@ -28,17 +28,17 @@ public class CircleIntersect {
     ListNode<Integer> node12 = new ListNode<>(122);
     ListNode<Integer> node13 = new ListNode<>(123);
 
-    node1.nextNode = node2;
-    node2.nextNode = node3;
-    node3.nextNode = node4;
-    node4.nextNode = node5;
-    node5.nextNode = node6;
-    node6.nextNode = node7;
-    node7.nextNode = node2;
+    node1.next = node2;
+    node2.next = node3;
+    node3.next = node4;
+    node4.next = node5;
+    node5.next = node6;
+    node6.next = node7;
+    node7.next = node2;
 
-    node11.nextNode = node12;
-    node12.nextNode = node13;
-    node13.nextNode = node3;
+    node11.next = node12;
+    node12.next = node13;
+    node13.next = node3;
 
     Optional.of(judgeJoinByHash(node1, node11)).ifPresent(System.out::println);
   }
@@ -117,7 +117,7 @@ public class CircleIntersect {
       }
 
       aSet.add(a);
-      a = a.nextNode;
+      a = a.next;
     }
 
     while (b != null) {
@@ -130,7 +130,7 @@ public class CircleIntersect {
         return true;
       }
       bSet.add(b);
-      b = b.nextNode;
+      b = b.next;
     }
 
     return false;

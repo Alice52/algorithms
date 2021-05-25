@@ -6,6 +6,7 @@ import java.util.OptionalInt;
 import java.util.stream.IntStream;
 
 /**
+ * function: 数组去重, 保留一位<br>
  * issue-link: https://github.com/Alice52/Algorithms/issues/18 <br>
  * leetcode-link: https://leetcode.com/problems/remove-duplicates-from-sorted-array/ <br>
  *

@@ -24,8 +24,8 @@ public class AddTwoNumber {
 
     ListNode<Integer> nodeT1 = addTwoNumber(a, b);
     while (nodeT1 != null) {
-      System.out.print(nodeT1.value);
-      nodeT1 = nodeT1.nextNode;
+      System.out.print(nodeT1.val);
+      nodeT1 = nodeT1.next;
     }
 
     Optional.of(1).ifPresent(System.out::println);
@@ -36,8 +36,8 @@ public class AddTwoNumber {
     ListNode<Integer> b2 = new ListNode<Integer>(1);
     ListNode<Integer> nodeT2 = addTwoNumber(a2, b2);
     while (nodeT2 != null) {
-      System.out.print(nodeT2.value);
-      nodeT2 = nodeT2.nextNode;
+      System.out.print(nodeT2.val);
+      nodeT2 = nodeT2.next;
     }
   }
 
@@ -66,30 +66,30 @@ public class AddTwoNumber {
     while (a != null || b != null) {
       tempSum = carry;
       if (a != null) {
-        tempSum += a.value;
-        a = a.nextNode;
+        tempSum += a.val;
+        a = a.next;
       }
 
       if (b != null) {
-        tempSum += b.value;
-        b = b.nextNode;
+        tempSum += b.val;
+        b = b.next;
       }
 
       carry = tempSum / 10;
 
       // core: dummyHead -> A => dummyHead -> B -> A
       ListNode<Integer> newNode = new ListNode<Integer>(tempSum % 10);
-      newNode.nextNode = dummyHead.nextNode;
-      dummyHead.nextNode = newNode;
+      newNode.next = dummyHead.next;
+      dummyHead.next = newNode;
     }
 
     if (carry > 0) {
       ListNode<Integer> newNode = new ListNode<Integer>(carry);
-      newNode.nextNode = dummyHead.nextNode;
-      dummyHead.nextNode = newNode;
+      newNode.next = dummyHead.next;
+      dummyHead.next = newNode;
     }
 
-    return dummyHead.nextNode;
+    return dummyHead.next;
   }
 
   /**
