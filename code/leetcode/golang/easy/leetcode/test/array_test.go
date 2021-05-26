@@ -3,6 +3,7 @@ package test
 import (
     "fmt"
     "golang/easy/leetcode/array"
+    "golang/easy/leetcode/array/_0026"
     "testing"
 )
 
@@ -71,4 +72,11 @@ func TestContainsNearbyDuplicate(t *testing.T) {
 
     result := array.ContainsNearbyDuplicate([]int{1, 2, 3, 1, 2, 3}, 2)
     fmt.Printf("contains nearby duplicate: %v\n", result)
+}
+
+
+func TestDeDuplicateAll(t *testing.T) {
+
+    result := _0026.DeDuplicateAll([]int{1, 2, 3, 1, 2, 3})
+    fmt.Printf("deduplicate elemnet count: %v\n", result)
 }
