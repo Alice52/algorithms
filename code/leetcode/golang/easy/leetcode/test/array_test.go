@@ -74,7 +74,6 @@ func TestContainsNearbyDuplicate(t *testing.T) {
     fmt.Printf("contains nearby duplicate: %v\n", result)
 }
 
-
 func TestDeDuplicateAll(t *testing.T) {
 
     result := _0026.DeDuplicateAll([]int{1, 2, 3, 1, 2, 3})

@@ -143,12 +143,14 @@ public class DuplicateContainsNearby {
         if (k < 0 || length < 2 || t < 0) {
             return false;
         }
-
+        int count;
         for (int i = 0; i < length; i++) {
-            for (int j = i + 1; j < length && k >= j - i; j++) {
+            count = 0;
+            for (int j = i + 1; j < length; j++) {
                 if (Math.abs((long) nums[i] - (long) nums[j]) <= t) {
                     return true;
                 }
+                count++;
             }
         }
         return false;
