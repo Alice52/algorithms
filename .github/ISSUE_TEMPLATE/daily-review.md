@@ -2,111 +2,65 @@
 name: daily-review
 about: This is daily algorithms of leetcode about simple review
 title: "[daily] 2021-xx-xx"
-labels: raw-question, easy
+labels: documentation, raw-question, easy, leetcode
 assignees: Alice52
 
 ---
-## issue 1
 
+- [ ] issue 1
 
-1. [reference](https://leetcode-cn.com/problems/xx)
+1. [reference](x)
 2. discription
-    - N/A
-3. example
 
-    ```js
-    
-    ```
+   - N/A
 
-4. Core Thinking
+3. core
+   - N/A
 
-    - xxx
-    - xxx
+---
 
-5. Conclusion
+- [ ] issue 2
 
-    - N/A
-
-## issue 2
-
-
-1. [reference](https://leetcode-cn.com/problems/xx)
+1. [reference](x)
 2. discription
-    - N/A
-3. example
 
-    ```js
-    
-    ```
+   - N/A
 
-4. Core Thinking
+3. core
 
-    - xxx
-    - xxx
+   - N/A
 
-5. Conclusion
+---
 
-    - N/A
+- [ ] issue 3
 
-## issue 3
-
-
-1. [reference](https://leetcode-cn.com/problems/xx)
+1. [reference]()
 2. discription
-    - N/A
-3. example
+   - N/A
+3. core
 
-    ```js
-    
-    ```
+   - N/A
 
-4. Core Thinking
+---
 
-    - xxx
-    - xxx
+- [ ] issue 4
 
-5. Conclusion
-
-    - N/A
-
-## issue 4
-
-
-1. [reference](https://leetcode-cn.com/problems/xx)
+1. [reference]()
 2. discription
-    - N/A
-3. example
+   - N/A
+3. core
 
-    ```js
-    
-    ```
+   - N/A
 
-4. Core Thinking
+---
 
-    - xxx
-    - xxx
+- [ ] issue 5
 
-5. Conclusion
-
-    - N/A
-
-## issue 5
-
-
-1. [reference](https://leetcode-cn.com/problems/xx)
+1. [reference]()
 2. discription
-    - N/A
-3. example
+   - N/A
+3. core
 
-    ```js
-    
-    ```
+   - N/A
 
-4. Core Thinking
-
-    - xxx
-    - xxx
-
-5. Conclusion
-
-    - N/A
+---
