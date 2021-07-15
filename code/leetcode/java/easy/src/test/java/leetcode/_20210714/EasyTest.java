@@ -1,6 +1,7 @@
 package leetcode._20210714;
 
 import lombok.extern.slf4j.Slf4j;
+import model.leetcode.common.util.MathUtil;
 import org.junit.Test;
 
 /**
@@ -13,18 +14,59 @@ public class EasyTest {
 
     @Test
     public void test053() {
-
-        int str = maxSubArray(new int[] {-2, 1, -3, 4, -1, 2, 1, -5, 4});
+        int str = maxSubArray(new int[] {1});
         log.info("053 maxSubArray result: {}", str);
     }
 
+    /**
+     * DP
+     *
+     * <pre>
+     *  1. 选:   f(i) = max{nums[i] + f(i-1), nums[i]}
+     *  2. 不选: f(i) = f(i-1)
+     *  ----------
+     *  dp:     f(i) = max{nums[i] + f(i-1), nums[i]}
+     * </pre>
+     *
+     * @param nums
+     * @return
+     */
     public int maxSubArray(int[] nums) {
-        int pre = 0, maxAns = nums[0];
-        for (int x : nums) {
-            pre = Math.max(pre + x, x);
-            maxAns = Math.max(maxAns, pre);
+
+        int length = nums.length;
+
+        int[] dp = new int[length];
+        for (int i = 0; i < length; i++) {
+            if (i == 0) {
+                dp[i] = 0;
+            } else {
+                dp[i] = Math.max(dp[i - 1] + nums[i], nums[i]);
+            }
         }
-        return maxAns;
+
+        return MathUtil.max(dp);
+    }
+    /**
+     * 从最后一个开始: 选或者不选, 分别求出来每个的最大值, 最后取最大值<br>
+     *
+     * @param nums
+     * @return
+     */
+    @Deprecated
+    public int maxSubArrayV0(int[] nums) {
+        int length = nums.length;
+
+        int[] dp = new int[length];
+        for (int i = length - 1; i >= 0; i--) {
+            dp[i] = nums[i];
+            int tmp = dp[i];
+            for (int j = i - 1; j >= 0; j--) {
+                tmp = tmp + nums[j];
+                dp[i] = Math.max(dp[i], tmp);
+            }
+        }
+
+        return MathUtil.max(dp);
     }
 
     @Test
