@@ -1,7 +1,11 @@
 package leetcode._20210720;
 
 import lombok.extern.slf4j.Slf4j;
+import model.leetcode.common.model.ListNode;
 import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author zack <br>
@@ -10,9 +14,86 @@ import org.junit.Test;
  */
 @Slf4j
 public class EasyTest {
+    @Test
+    public void test459() {
+        repeatedSubstringPattern("abcabcabd");
+    }
+
+    public boolean repeatedSubstringPattern(String s) {
+
+        // BF:
+        int n = s.length();
+        for (int i = 1; i * 2 <= n; ++i) {
+            if (n % i == 0) {
+                boolean match = true;
+                for (int j = 1; j <= i; j++) {
+                    int count = 1;
+                    char temp = s.charAt(j - 1);
+                    while (i * count + j - 1 < n) {
+                        if (temp != s.charAt(i * count + j - 1)) {
+                            match = false;
+                            break;
+                        }
+                        count++;
+                    }
+                }
+
+                if (match) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    @Test
+    public void test234() {
+        ListNode head = ListNode.generateNode(1, 2, 3, 1);
+        ListNode palindrome = reverseList(head);
+    }
+
+    public ListNode reverseList(ListNode head) {
+        // 1. dummy -> 1: 遍历插入 dummy.next
+        // 2. satck
+        // 3. 翻转指针: cur.next.next=cur || next[pre]
+        // 4. 递归: 全局变量 || 翻转指针
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode newHead = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+
+        return newHead;
+    }
 
     @Test
     public void test746() {
+        isIsomorphic("paper", "title");
+    }
+
+    public boolean isIsomorphic(String s, String t) {
+
+        Map<Character, Character> map = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            char si = s.charAt(i);
+            char ti = t.charAt(i);
+
+            if (map.containsKey(si)) {
+                if (map.get(si) == ti) {
+                    return false;
+                }
+            } else {
+                if (map.values().contains(ti)) {
+                    return false;
+                }
+                map.put(si, ti);
+            }
+        }
+
+        return false;
     }
 
     public int minCostClimbingStairs(int[] cost) {
@@ -46,11 +127,11 @@ public class EasyTest {
 
         int[] dp = new int[end];
         dp[start] = nums[start];
-        dp[start+1] = Math.max(nums[start], nums[start+1]);
-        for(int i=start + 2; i < end; i++) {
-            dp[i] = Math.max(dp[i-2] + nums[i], dp[i-1]);
+        dp[start + 1] = Math.max(nums[start], nums[start + 1]);
+        for (int i = start + 2; i < end; i++) {
+            dp[i] = Math.max(dp[i - 2] + nums[i], dp[i - 1]);
         }
 
-        return dp[end-1];
+        return dp[end - 1];
     }
 }

@@ -13,11 +13,11 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor
 @AllArgsConstructor
 @Slf4j
-public class ListNode<T> {
-    public T val;
-    public ListNode<T> next;
+public class ListNode<Integer> {
+    public Integer val;
+    public ListNode<Integer> next;
 
-    public ListNode(T value) {
+    public ListNode(Integer value) {
         this.val = value;
     }
 
