@@ -42,7 +42,7 @@ public class EasyTest {
     @Deprecated
     public int dpFibV0(int n) {
 
-        int[] dp = new int[n+1];
+        int[] dp = new int[n + 1];
         for (int i = 1; i < n; i++) {
             // i=0: fib(0)=0
             if (i == 1 || i == 2) {

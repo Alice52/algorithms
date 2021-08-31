@@ -16,49 +16,32 @@ import java.util.Stack;
  */
 public class Easy {
 
-    @Test
-    public void testCombineSortedList() {
-
-        ListNode l1 = ListNode.generateNode(1, 2, 4);
-        ListNode l2 = ListNode.generateNode(1, 3, 4);
-
-        ListNode listNode = mergeTwoLists(l1, l2);
-
-        ListNode.print(listNode);
-    }
-
-    public ListNode<Integer> mergeTwoLists(ListNode<Integer> l1, ListNode<Integer> l2) {
-        if (l1 == null || l2 == null) {
-            return l1 == null ? l2 : l1;
-        }
-
-        ListNode<Integer> dummy = new ListNode<>(-1);
-        ListNode<Integer> result = dummy;
-
-        while (l1 != null && l2 != null) {
-            if (l1.val < l2.val) {
-                dummy.next = l1;
-                l1 = l1.next;
-            } else {
-                dummy.next = l2;
-                l2 = l2.next;
-            }
-
-            dummy = dummy.next;
-        }
-
-        // 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可
-        dummy.next = l1 == null ? l2 : l1;
-
-        return result.next;
-    }
-
     static final Map<Character, Character> pairs =
             new HashMap<Character, Character>() {
                 {
                     put(')', '(');
                     put('}', '{');
                     put(']', '[');
+                }
+            };
+    static final Map<Character, Character> map_2 =
+            new HashMap<Character, Character>() {
+                {
+                    put('(', ')');
+                    put('{', '}');
+                    put('[', ']');
+                }
+            };
+    static final Map<Character, Integer> map =
+            new HashMap<Character, Integer>() {
+                {
+                    put('I', 1);
+                    put('V', 5);
+                    put('X', 10);
+                    put('L', 50);
+                    put('C', 100);
+                    put('D', 500);
+                    put('M', 1000);
                 }
             };
 
@@ -85,15 +68,6 @@ public class Easy {
         return list.size() == 0;
     }
 
-    static final Map<Character, Character> map_2 =
-            new HashMap<Character, Character>() {
-                {
-                    put('(', ')');
-                    put('{', '}');
-                    put('[', ']');
-                }
-            };
-
     public static boolean isValidV1(String s) {
         int length = s.length();
         if (s.isEmpty() || length <= 1 || length % 2 == 1) {
@@ -114,60 +88,6 @@ public class Easy {
         }
 
         return stack.size() == 0;
-    }
-
-    public String longestCommonPrefix(String[] strs) {
-
-        int min = Integer.MAX_VALUE;
-        int tmp = 0;
-        for (String str : strs) {
-            tmp = str.length();
-            if (min > tmp) {
-                min = tmp;
-            }
-        }
-
-        String first = strs[0];
-        int count = strs.length;
-        for (int i = 0; i < min; i++) {
-            char c = first.charAt(i);
-            for (int j = 1; j < count; j++) {
-                if (strs[j].charAt(i) != c) {
-                    return first.substring(0, i);
-                }
-            }
-        }
-
-        return first;
-    }
-
-    static final Map<Character, Integer> map =
-            new HashMap<Character, Integer>() {
-                {
-                    put('I', 1);
-                    put('V', 5);
-                    put('X', 10);
-                    put('L', 50);
-                    put('C', 100);
-                    put('D', 500);
-                    put('M', 1000);
-                }
-            };
-
-    public int romanToInt(String s) {
-        int res = 0;
-        for (int i = 0; i < s.length() - 1; i++) {
-            Integer integer = map.get(s.charAt(i));
-            if (integer < map.get(s.charAt(i + 1))) {
-                res -= integer;
-            } else {
-                res += integer;
-            }
-        }
-
-        res += map.get(s.charAt(s.length() - 1));
-
-        return res;
     }
 
     public static boolean isPalindrome(int x) {
@@ -209,5 +129,83 @@ public class Easy {
     public static void main(String[] args) {
         boolean valid = isValid("([])");
         System.out.println(valid);
+    }
+
+    @Test
+    public void testCombineSortedList() {
+
+        ListNode l1 = ListNode.generateNode(1, 2, 4);
+        ListNode l2 = ListNode.generateNode(1, 3, 4);
+
+        ListNode listNode = mergeTwoLists(l1, l2);
+
+        ListNode.print(listNode);
+    }
+
+    public ListNode<Integer> mergeTwoLists(ListNode<Integer> l1, ListNode<Integer> l2) {
+        if (l1 == null || l2 == null) {
+            return l1 == null ? l2 : l1;
+        }
+
+        ListNode<Integer> dummy = new ListNode<>(-1);
+        ListNode<Integer> result = dummy;
+
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                dummy.next = l1;
+                l1 = l1.next;
+            } else {
+                dummy.next = l2;
+                l2 = l2.next;
+            }
+
+            dummy = dummy.next;
+        }
+
+        // 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可
+        dummy.next = l1 == null ? l2 : l1;
+
+        return result.next;
+    }
+
+    public String longestCommonPrefix(String[] strs) {
+
+        int min = Integer.MAX_VALUE;
+        int tmp = 0;
+        for (String str : strs) {
+            tmp = str.length();
+            if (min > tmp) {
+                min = tmp;
+            }
+        }
+
+        String first = strs[0];
+        int count = strs.length;
+        for (int i = 0; i < min; i++) {
+            char c = first.charAt(i);
+            for (int j = 1; j < count; j++) {
+                if (strs[j].charAt(i) != c) {
+                    return first.substring(0, i);
+                }
+            }
+        }
+
+        return first;
+    }
+
+    public int romanToInt(String s) {
+        int res = 0;
+        for (int i = 0; i < s.length() - 1; i++) {
+            Integer integer = map.get(s.charAt(i));
+            if (integer < map.get(s.charAt(i + 1))) {
+                res -= integer;
+            } else {
+                res += integer;
+            }
+        }
+
+        res += map.get(s.charAt(s.length() - 1));
+
+        return res;
     }
 }

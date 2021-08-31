@@ -25,7 +25,7 @@ public class EasyTest {
         int middle;
         while (left <= right) {
             middle = (right - left) / 2 + left;
-            if ((long) middle * middle  <= x) {
+            if ((long) middle * middle <= x) {
                 left = middle + 1;
             } else {
                 right = middle - 1;
